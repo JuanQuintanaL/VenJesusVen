@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ven, Jesús, ven</title>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F4F5F9;--card:#fff;--ink:#1B2340;--mute:#5B6280;--flame:#C2410C;--line:#DCDFEA;--soft:#FDEBDD;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12162A;--card:#1B2038;--ink:#EEF0F8;--mute:#A4AAC4;--flame:#FF9A66;--line:#2C3352;--soft:#3A2A24}}
+:root[data-theme="dark"]{--bg:#12162A;--card:#1B2038;--ink:#EEF0F8;--mute:#A4AAC4;--flame:#FF9A66;--line:#2C3352;--soft:#3A2A24}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Instrument Sans",system-ui,sans-serif}
+main{max-width:720px;margin:0 auto;padding:20px 16px 40px}
+h1,h2,h3{font-family:"Young Serif",Georgia,serif;font-weight:400;line-height:1.2;margin:0}
+h1{font-size:2rem}
+h2{font-size:1.35rem;margin-bottom:8px}
+h3{font-size:1.1rem}
+.lead{color:var(--mute);margin:8px 0 24px}
+section{margin-top:28px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.seg{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.seg button{flex:1;min-width:96px;padding:10px 12px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;font:inherit;font-weight:600;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.note{font-size:.9rem;color:var(--mute);margin:10px 0 0}
+ol.rhythm,ul.rhythm{margin:0;padding-left:20px}
+.leave{color:var(--flame);margin-top:-4px}
+.ref a{color:var(--flame);font-weight:600;text-decoration:none;margin-left:8px}
+.ref a:hover{text-decoration:underline}
+.hoy{border:2px solid var(--flame)}
+.day:target{outline:2px solid var(--flame);outline-offset:2px;border-radius:8px}
+.foot{font-size:.8rem;color:var(--mute);margin-top:24px}
+.phase{margin-top:26px}
+.phase p{margin:4px 0 10px;color:var(--mute)}
+.day{display:grid;grid-template-columns:56px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.day.culto{background:var(--soft);margin:0 -8px;padding:12px 8px;border-radius:8px;border-top-color:transparent}
+.dn{text-align:center;line-height:1.1}
+.dn b{display:block;font:400 1.6rem "Young Serif",Georgia,serif}
+.dn span{font-size:.8rem;color:var(--mute)}
+.ft{font-weight:600}
+.ref{color:var(--mute);font-size:.9rem}
+.tags{margin-top:4px;display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:.8rem;padding:2px 8px;border-radius:99px;border:1px solid var(--flame);color:var(--flame)}
+.tag.c{background:var(--flame);color:var(--bg)}
+@media (prefers-reduced-motion:no-preference){.seg button{transition:background .15s}}
+</style></head>
+<body><main>
+<h1>Ven, Jesús, ven</h1>
+<p class="lead">Octubre: mes de ayuno y oración. Del 1 al 31 de octubre de 2026.</p>
+
+<section id="hoy"></section>
+
+<section>
+<h2>Por qué ayunamos</h2>
+<div class="box"><p style="margin:0 0 8px">Necesitamos entregarnos más a Jesús y dejar atrás todo lo que nos impide ser la iglesia que fue la iglesia primitiva. Este ayuno es una búsqueda profunda del rostro del Señor.</p>
+<ul class="rhythm">
+<li>Un mes para buscar el rostro del Señor.</li>
+<li>Intimidad con el Espíritu Santo.</li>
+<li>Rendir nuestra vida a Jesús.</li>
+<li>Vivir el propósito y llamado.</li>
+<li>Preparación para recibir el Kairos.</li>
+</ul></div>
+</section>
+
+<section>
+<h2>Elige cómo ayunar</h2>
+<div class="seg" id="seg">
+<button data-m="p" aria-pressed="true">Parcial</button>
+<button data-m="t" aria-pressed="false">Total</button>
+<button data-m="d" aria-pressed="false">Daniel</button>
+</div>
+<div class="box" id="desc"></div>
+<p class="note">Si tienes una condición médica, estás embarazada, en lactancia o tomas medicamentos, elige el ayuno parcial o consulta primero a tu médico.</p>
+</section>
+
+<section>
+<h2>Cada día del mes</h2>
+<div class="box"><ol class="rhythm">
+<li>Lee el texto del día.</li>
+<li>Ora el enfoque de ese día.</li>
+<li>Anota lo que el Señor te habla.</li>
+<li>Decide una acción concreta para obedecerlo.</li>
+</ol></div>
+</section>
+
+<section>
+<h2>Calendario</h2>
+<div id="cal"></div>
+</section>
+
+<section>
+<h2>Retiro</h2>
+<div class="box">Inversión: 30 mil colones. Incluye 10 tiempos de alimentación, hospedaje y transporte. Fecha por anunciar.</div>
+</section>
+
+<section>
+<h2>Canal de WhatsApp</h2>
+<div class="box">Síguelo y activa las notificaciones. Medita y aplica los mensajes a tu vida, y compártelos.</div>
+</section>
+<p class="foot">El texto bíblico se abre en Bible Gateway. RVR95: Reina-Valera 95, © Sociedades Bíblicas Unidas. NTV: Nueva Traducción Viviente, © Tyndale House Publishers.</p>
+</main>
+<script>
+const F=[
+["Ven, Jesús, ven: decidimos buscar tu rostro","Salmo 27:8"],
+["Buscarlo con todo el corazón","Jeremías 29:13"],
+["Una sola cosa: estar en su presencia","Salmo 27:4"],
+["Hambre y sed de Dios","Salmo 63:1"],
+["Soltar lo que compite con Jesús en mi corazón","Santiago 4:4; Hebreos 12:1"],
+["Volver al primer amor","Apocalipsis 2:4-5"],
+["Necesito al Espíritu Santo: él nos ayuda a orar","Romanos 8:26-27"],
+["Ser llenos del Espíritu","Efesios 5:18"],
+["Que me enseñe y me recuerde lo que Jesús dijo","Juan 14:26"],
+["Ser guiado a toda verdad","Juan 16:13"],
+["Inicio del ayuno de Daniel: vivir en el Espíritu, no en la carne","Daniel 10:2-3; Gálatas 5:16"],
+["No apagar ni entristecer al Espíritu","1 Tesalonicenses 5:19; Efesios 4:30"],
+["Presentar mi vida como sacrificio vivo","Romanos 12:1-2"],
+["Negarme a mí mismo y seguirlo","Lucas 9:23"],
+["Que se haga tu voluntad y no la mía","Lucas 22:42"],
+["Confesar y dejar el pecado que me enreda","Hebreos 12:1; 1 Juan 1:9"],
+["Ya no vivo yo, vive Cristo en mí","Gálatas 2:20"],
+["Que Jesús sea Señor de todo: amarlo y obedecerlo","Juan 14:15, 23"],
+["Fui creado con un propósito","Efesios 2:10"],
+["Un llamado que me pertenece","Efesios 4:1; 2 Timoteo 1:9"],
+["Vencer el temor y dar el paso","Josué 1:9"],
+["Ser la iglesia de Hechos: unidad, poder y comunión","Hechos 2:42-47"],
+["Ungidos y enviados con buenas noticias","Isaías 61:1-2"],
+["Testificar con urgencia: los campos están listos","Juan 4:35"],
+["Hoy es el tiempo aceptable, hoy es el día","2 Corintios 6:2"],
+["Redimir el tiempo","Efesios 5:15-16"],
+["Preparar el aceite: estar listos para su venida","Mateo 25:1-13"],
+["Velar y orar","Mateo 26:41"],
+["Esperar en el Señor y renovar las fuerzas","Isaías 40:31"],
+["Ven, Jesús, ven: el Espíritu y la esposa dicen ven","Apocalipsis 22:17, 20"],
+["Cierre: gracias, entrega y confianza en su Kairos","Hebreos 4:16"]];
+const P=[
+[1,"Buscar su rostro","Un mes para buscar su rostro, no solo sus manos.","lo que compite con Jesús y nos distrae de Él."],
+[7,"Intimidad con el Espíritu Santo","Depender del Espíritu que nos ayuda a orar, nos enseña y nos guía.","confiar en mis fuerzas y en mi propio entendimiento."],
+[13,"Rendir nuestra vida a Jesús","Entregarle a Jesús todo el gobierno de mi vida.","mi voluntad, mis excusas y mi manera de hacer las cosas."],
+[19,"Vivir el propósito y llamado","Ser la iglesia que Dios diseñó, como la iglesia primitiva.","la comodidad, el miedo y la postergación."],
+[25,"Preparación para recibir el Kairos","Estar listos para el momento en que Dios actúa.","el después, la negligencia y el tiempo mal usado."]];
+const D={
+p:"Ayuno parcial, constante, hasta las 2:00 PM todos los días, del 1 al 31 de octubre.",
+t:"Ayuno total 4 días a la semana: lunes, martes, jueves y viernes, con agua. Los demás días comes normal.",
+d:"Ayuno de Daniel, 21 días, del 11 al 31 de octubre: frutas y legumbres, y agua para beber. Del 1 al 10 acompañas con ayuno parcial."};
+const W=["dom","lun","mar","mié","jue","vie","sáb"];
+const WF=["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
+function lk(r){const q=encodeURIComponent(r),u="https://www.biblegateway.com/passage/?search="+q+"&version=";
+ return r+'<a href="'+u+'RVR1995" target="_blank" rel="noopener">RVR95</a><a href="'+u+'NTV" target="_blank" rel="noopener">NTV</a>';}
+let mode="p";
+function tag(d,w){
+ if(mode==="p")return "Hasta las 2:00 PM";
+ if(mode==="t")return [1,2,4,5].includes(w)?"Ayuno total":"";
+ return d>=11?"Ayuno de Daniel":"Ayuno parcial";
+}
+function render(){
+ document.getElementById("desc").textContent=D[mode];
+ const n=new Date(),hs=document.getElementById("hoy");
+ const today=(n.getFullYear()===2026&&n.getMonth()===9)?n.getDate():0;
+ if(today){const w=n.getDay(),f=F[today-1],t=tag(today,w);
+  hs.innerHTML='<h2>Hoy, '+WF[w]+' '+today+' de octubre</h2><div class="box hoy"><div class="ft">'+f[0]+'</div><div class="ref">'+lk(f[1])+'</div>'+(t?'<div class="tags"><span class="tag">'+t+'</span></div>':'')+'</div>';}
+ else if(n<new Date(2026,9,1))hs.innerHTML='<div class="box hoy">Empezamos el jueves 1 de octubre. Vuelve ese día para ver el enfoque de hoy.</div>';
+ else hs.innerHTML='<div class="box hoy">El mes de ayuno terminó. Gracias por buscar juntos el rostro del Señor.</div>';
+ let h="";
+ P.forEach((p,i)=>{
+  const end=i<P.length-1?P[i+1][0]-1:31;
+  h+='<div class="phase"><h3>'+p[1]+' (del '+p[0]+' al '+end+' de octubre)</h3><p>'+p[2]+'</p><p class="leave">Dejar atrás: '+p[3]+'</p>';
+  for(let d=p[0];d<=end;d++){
+   const w=new Date(2026,9,d).getDay(),f=F[d-1],t=tag(d,w);
+   const c=w===4?"Culto 7:00 PM":(w===0?"Culto dominical":"");
+   h+='<div id="d'+d+'" class="day'+(c?' culto':'')+'"><div class="dn"><b>'+d+'</b><span>'+W[w]+'</span></div><div><div class="ft">'+f[0]+'</div><div class="ref">'+lk(f[1])+'</div><div class="tags">'+(t?'<span class="tag">'+t+'</span>':'')+(d===today?'<span class="tag c">Hoy</span>':'')+(c?'<span class="tag c">'+c+'</span>':'')+'</div></div></div>';
+  }
+  h+='</div>';
+ });
+ document.getElementById("cal").innerHTML=h;
+}
+document.querySelectorAll("#seg button").forEach(b=>b.addEventListener("click",()=>{
+ mode=b.dataset.m;
+ document.querySelectorAll("#seg button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+ render();
+}));
+render();
+try{if(location.hash){const e=document.querySelector(location.hash);if(e)e.scrollIntoView();}}catch(x){}
+</script></body></html>
